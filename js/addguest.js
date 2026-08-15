@@ -182,4 +182,26 @@ async function updateGuest(data) {
   }
 }
 
-urlguest
+async function getGuest(id) {
+  const options = {
+    method: "POST",
+    mode: "cors", // 1. Explicitly enable Cross-Origin Resource Sharing
+    headers: {
+      "Content-Type": "application/json",
+      // 'Accept': 'application/json' (Optional: tells server what you want back)
+    },
+  };
+
+  try {
+    const response = await fetch(url + "getGuest/" + id, options);
+
+    if (!response.ok) {
+      throw new Error(`HTTP Error! Status: ${response.status}`);
+    }
+
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error("CORS or Network Error:", error);
+  }
+}
