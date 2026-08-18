@@ -7,31 +7,23 @@ $(document).ready(function async() {
 });
 
 function redrawList() {
+  var table = $("#table2").DataTable();
+
   fetchLoadGuest().then((listGuest) => {
-    var newRowContent = "";
-    document.getElementById("rows-data").innerHTML = "";
+    
     for (var i = 0; i < listGuest.length; i++) {
-      newRowContent += "<tr>";
-      newRowContent += "<td>" + listGuest[i].name + "</td>";
-      newRowContent += "<td>" + listGuest[i].address + "</td>";
-      newRowContent += "<td>" + listGuest[i].pax + "</td>";
-      newRowContent += "<td>" + listGuest[i].nohp + "</td>";
-      newRowContent +=
-        "<td>" +
-        '<span class="badge bg-success">' +
-        listGuest[i].type +
-        "</span>" +
-        "</td>";
-      newRowContent +=
-        "<td>" +
+      
+      table.row.add([
+        listGuest[i].name,
+        listGuest[i].address,
+        listGuest[i].pax,
+        listGuest[i].nohp,
+        "<span class=\"badge bg-success\">"+listGuest[i].type+"</span>",
         '<a href="' +
         listGuest[i].link +
         '">' +
         listGuest[i].link +
-        "</a>" +
-        "</td>";
-      newRowContent +=
-        "<td>" +
+        "</a>",
         "<button onclick=\"onShare('" +
         i +
         '\')" class="btn icon btn-primary" data-bs-toggle="modal" data-bs-target="#shareForm"><i class="bi bi-share"></i></button>' +
@@ -40,11 +32,9 @@ function redrawList() {
         '\')" class="btn icon btn-primary"><i class="bi bi-pencil"></i></button>' +
         "<button onclick=\"onDelete('" +
         listGuest[i].id +
-        '\')" class="btn icon btn-danger"><i class="bi bi-x"></i></button>' +
-        "</td>";
-      newRowContent += "<tr>";
+        '\')" class="btn icon btn-danger"><i class="bi bi-x"></i></button>'
+      ]).draw(false);
     }
-    document.getElementById("rows-data").innerHTML = newRowContent;
   });
 }
 
@@ -262,4 +252,13 @@ async function insertGuest(data) {
   } catch (error) {
     console.error("CORS or Network Error:", error);
   }
+}
+
+// Query for Pagination
+async function fetchLoadNext() {
+
+}
+
+async function fetchLoadPrev() {
+
 }

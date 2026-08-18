@@ -191,7 +191,9 @@
                         <div class="modal-body">
                           <label for="download">Download Template </label>
                           <div class="form-group">
-                            <a href="assets/file/template_tamu.xlsx" class="btn icon icon-left btn-primary"
+                            <a
+                              href="assets/file/template_tamu.xlsx"
+                              class="btn icon icon-left btn-primary"
                               ><i data-feather="file"></i> Download Template
                               File</a
                             >
@@ -238,8 +240,8 @@
               <div class="card-header">
                 <h5 class="card-title">List Tamu Undangan</h5>
               </div>
-              <div class="card-body">
-                <table class="table table-striped" id="table1">
+              <div class="card-body table-responsive">
+                <table class="table table-striped" id="table2">
                   <thead>
                     <tr>
                       <th>Name</th>
@@ -251,70 +253,81 @@
                       <th>Action</th>
                     </tr>
                   </thead>
-                  <tbody id="rows-data"></tbody>
+                  <tbody></tbody>
                 </table>
               </div>
               <div
-                  class="modal fade text-left"
-                  id="shareForm"
-                  tabindex="-1"
-                  role="dialog"
-                  aria-labelledby="myModalLabel34"
-                  aria-hidden="true"
+                class="modal fade text-left"
+                id="shareForm"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="myModalLabel34"
+                aria-hidden="true"
+              >
+                <div
+                  class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+                  role="document"
                 >
-                  <div
-                    class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-                    role="document"
-                  >
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel33">
-                          Share Form
-                        </h4>
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title" id="myModalLabel33">
+                        Share Form
+                      </h4>
+                      <button
+                        type="button"
+                        class="close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      >
+                        <i data-feather="x"></i>
+                      </button>
+                    </div>
+                    <form action="#">
+                      <div class="modal-body">
+                        <label for="to">To</label>
+                        <div class="form-group">
+                          <textarea
+                            class="form-control"
+                            id="toShare"
+                            rows="1"
+                            readonly
+                          ></textarea>
+                        </div>
+
+                        <label for="msg">Message</label>
+                        <div class="form-group">
+                          <textarea
+                            class="form-control"
+                            id="messageShare"
+                            rows="3"
+                          ></textarea>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
                         <button
                           type="button"
-                          class="close"
+                          class="btn btn-light-secondary"
                           data-bs-dismiss="modal"
-                          aria-label="Close"
                         >
-                          <i data-feather="x"></i>
+                          <i class="bx bx-x d-block d-sm-none"></i>
+                          <span class="d-none d-sm-block">Close</span>
+                        </button>
+                        <button
+                          id="btnShareMessage"
+                          type="button"
+                          class="btn btn-primary ms-1"
+                          data-bs-dismiss="modal"
+                        >
+                          <i class="bx bx-check d-block d-sm-none"></i>
+                          <span class="d-none d-sm-block"
+                            >Share via WhatsApp</span
+                          >
                         </button>
                       </div>
-                      <form action="#">
-                        <div class="modal-body">
-                          <label for="to">To</label>
-                          <div class="form-group">
-                            <textarea class="form-control" id="toShare" rows="1" readonly></textarea>
-                          </div>
-                          
-                          <label for="msg">Message</label>
-                          <div class="form-group">
-                            <textarea class="form-control" id="messageShare" rows="3"></textarea>
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button
-                            type="button"
-                            class="btn btn-light-secondary"
-                            data-bs-dismiss="modal"
-                          >
-                            <i class="bx bx-x d-block d-sm-none"></i>
-                            <span class="d-none d-sm-block">Close</span>
-                          </button>
-                          <button
-                            id="btnShareMessage"
-                            type="button"
-                            class="btn btn-primary ms-1"
-                            data-bs-dismiss="modal"
-                          >
-                            <i class="bx bx-check d-block d-sm-none"></i>
-                            <span class="d-none d-sm-block">Share via WhatsApp</span>
-                          </button>
-                        </div>
-                      </form>
-                    </div>
+                    </form>
                   </div>
                 </div>
+              </div>
             </div>
           </section>
         </div>
@@ -324,8 +337,8 @@
     <script src="assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 
     <script src="assets/compiled/js/app.js"></script>
-
-    <script src="assets/extensions/simple-datatables/umd/simple-datatables.js"></script>
-    <script src="assets/static/js/pages/simple-datatables.js"></script>
+    <script src="assets/extensions/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="assets/extensions/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
+    <script src="assets/static/js/pages/datatables.js"></script>
   </body>
 </html>

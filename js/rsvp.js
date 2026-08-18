@@ -8,29 +8,25 @@ $(document).ready(function async() {
 });
 
 function redrawList() {
+  var table = $("#table2").DataTable();
+
   fetchLoadRsvp().then(async (listRsvp) =>  {
-    var newRowContent = "";
-    document.getElementById("rows-data").innerHTML = "";
     for (var i = 0; i < listRsvp.length; i++) {
       var details = await fetchGetGuest(listRsvp[i].documentId);
       console.log("Detail RSVP : " + details);
       console.log("List RSVP : " + listRsvp[i]);
 
-      newRowContent += "<tr>";
-      newRowContent += "<td>" + listRsvp[i].name + "</td>";
-      newRowContent += "<td>" + details.res.address + "</td>";
-      newRowContent += "<td>" + details.res.nohp + "</td>";
-      newRowContent += "<td>" + details.res.pax + "</td>";
-      newRowContent += "<td>" + listRsvp[i].confirmedpax + "</td>";
-      newRowContent +=
-        "<td>" +
+      table.row.add([
+        listRsvp[i].name,
+        details.res.address,
+        details.res.nohp,
+        details.res.pax,
+        listRsvp[i].confirmedpax,
         '<span class="badge bg-success">' +
         listRsvp[i].type +
-        "</span>" +
-        "</td>";
-      newRowContent += "<tr>";
+        "</span>"
+      ]).draw(false);
     }
-    document.getElementById("rows-data").innerHTML = newRowContent;
   });
 }
 
