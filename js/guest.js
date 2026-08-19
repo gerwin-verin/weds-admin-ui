@@ -9,6 +9,7 @@ $(document).ready(function async() {
 function redrawList() {
   var table = $("#table2").DataTable();
 
+  table.row = [];
   fetchLoadGuest().then((listGuest) => {
     
     for (var i = 0; i < listGuest.length; i++) {

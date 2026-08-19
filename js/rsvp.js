@@ -10,6 +10,7 @@ $(document).ready(function async() {
 function redrawList() {
   var table = $("#table2").DataTable();
 
+  table.row = [];
   fetchLoadRsvp().then(async (listRsvp) =>  {
     for (var i = 0; i < listRsvp.length; i++) {
       var details = await fetchGetGuest(listRsvp[i].documentId);
